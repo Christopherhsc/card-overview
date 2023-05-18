@@ -1,0 +1,17 @@
+<ion-item color="primary">
+  <ion-label>NAME</ion-label>
+  <ion-label>ACTIVE</ion-label>
+  <ion-label>PRICE</ion-label>
+  <ion-label>CARD</ion-label>
+</ion-item>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let card of cards" [routerLink]="['./', card.id]">
+      <ion-label>{{card.title}}</ion-label>
+      <ion-label>{{card.active}}</ion-label>
+      <ion-label>{{card.price}}$</ion-label>
+      <ion-label>{{card.cardName}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
