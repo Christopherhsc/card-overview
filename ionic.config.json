@@ -1,5 +1,7 @@
 {
   "name": "card-overview",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
