@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'card-overview',
   webDir: 'www',
   "server": {
-    "url": "http://192.168.1.149:8100",
+    "url": "http://192.168.1.149:4200",
     "cleartext": true
   },
 };
