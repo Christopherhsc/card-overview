@@ -9,11 +9,13 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: '',
-    loadChildren: () => import('./card/card.module').then
-    ((m) => m.CardModule),
+    path: 'tmp',
+    loadChildren: () => import('./card/card.module').then((m) => m.CardModule),
   },
-
+  {
+    path: '',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
 ];
 
 @NgModule({
