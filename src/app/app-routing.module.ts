@@ -9,11 +9,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'tmp',
+    path: '',
     loadChildren: () => import('./card/card.module').then((m) => m.CardModule),
   },
   {
-    path: '',
+    path: 'tmp',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 ];
