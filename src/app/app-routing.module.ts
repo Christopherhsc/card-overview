@@ -3,19 +3,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '**',
+    path: '',
     redirectTo: '',
+    pathMatch: 'full'
   },
   {
     path: '',
     loadChildren: () =>
-      import('./landing-page/landing-page.module').then(
-        (m) => m.LandingPageModule
+      import('./user-landing-page/user-landing-page.module').then(
+        (m) => m.UserLandingPageModule
       ),
-  },
-  {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 
