@@ -1,0 +1,28 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>My transactions</ion-title>
+      <ion-buttons slot="primary">
+        <ion-button routerLink="new">
+          <ion-icon name="add" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+    <ion-list>
+      <ion-item>
+        <ion-label>Title</ion-label>
+        <ion-label>Active</ion-label>
+        <ion-label>Price</ion-label>
+        <ion-label>Card name</ion-label>
+      </ion-item>
+    </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let card of loadedCards" [routerLink]="['./', card.id]">
+      <ion-label>{{ card.title }}</ion-label>
+      <ion-label>{{ card.active }}</ion-label>
+      <ion-label>{{ card.price | currency }}</ion-label>
+      <ion-label>{{ card.cardName }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
