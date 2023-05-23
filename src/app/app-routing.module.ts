@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './auth/components/auth/auth.component';
 
 const routes: Routes = [
   {
@@ -10,10 +11,17 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./user-landing-page/user-landing-page.module').then(
-        (m) => m.UserLandingPageModule
+      import('./auth/auth.module').then(
+        (m) => m.AuthModule
       ),
   },
+  // {
+  //   path: '',
+  //   loadChildren: () =>
+  //     import('./user-landing-page/user-landing-page.module').then(
+  //       (m) => m.UserLandingPageModule
+  //     ),
+  // },
 ];
 
 @NgModule({
