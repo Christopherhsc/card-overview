@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CardService } from '../../card.service';
 import { Card } from '../../card.model';
 
@@ -13,7 +13,8 @@ export class CardDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private cardService: CardService
+    private cardService: CardService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -21,7 +22,14 @@ export class CardDetailsComponent implements OnInit {
       if (!paramMap.has('cardId')) {
         return;
       }
-      const cardId = this.cardService.getCard(paramMap.get('cardId')!);
+      const cardId = paramMap.get('cardId');
+      if (cardId !== null) {
+        this.card = this.cardService.getCard(cardId);
+      }
     });
+  }
+
+  goToEditCard() {
+    this.router.navigate(['cardId', '/edit' ]);
   }
 }

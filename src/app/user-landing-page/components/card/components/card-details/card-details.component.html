@@ -6,5 +6,10 @@
     <ion-title>{{ card?.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content text-center>
+<ion-content class="padding">
+  <ion-button
+    margin
+    color="primary"
+    [routerLink]="['/', 'card', 'edit', card?.id]"
+  ></ion-button>
 </ion-content>

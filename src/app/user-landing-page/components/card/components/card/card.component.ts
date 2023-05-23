@@ -12,6 +12,6 @@ export class CardComponent implements OnInit {
   constructor(private cardService: CardService) {}
 
   ngOnInit() {
-    this.loadedCards = this.cardService.cards
+    this.loadedCards = this.cardService.cards;
   }
 }

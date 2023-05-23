@@ -1,6 +1,11 @@
 <ion-content>
   <ion-header>
     <ion-toolbar>
+      <ion-button slot="start">
+        <ion-menu-button>
+          
+        </ion-menu-button>
+      </ion-button>
       <ion-title>My transactions</ion-title>
       <ion-buttons slot="primary">
         <ion-button routerLink="new">
@@ -9,20 +14,18 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-    <ion-list>
-      <ion-item>
-        <ion-label>Title</ion-label>
-        <ion-label>Active</ion-label>
-        <ion-label>Price</ion-label>
-        <ion-label>Card name</ion-label>
-      </ion-item>
-    </ion-list>
   <ion-list>
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-label class="ion-text-center">Active</ion-label>
+      <ion-label class="ion-text-center">Price</ion-label>
+      <ion-label class="ion-text-center">Card name</ion-label>
+    </ion-item>
     <ion-item *ngFor="let card of loadedCards" [routerLink]="['./', card.id]">
       <ion-label>{{ card.title }}</ion-label>
-      <ion-label>{{ card.active }}</ion-label>
-      <ion-label>{{ card.price | currency }}</ion-label>
-      <ion-label>{{ card.cardName }}</ion-label>
+      <ion-label class="ion-text-center">{{ card.active }}</ion-label>
+      <ion-label class="ion-text-center">{{ card.price | currency }}</ion-label>
+      <ion-label class="ion-text-center">{{ card.cardName }}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

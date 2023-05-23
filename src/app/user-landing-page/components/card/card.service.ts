@@ -16,9 +16,8 @@ export class CardService {
     return [...this._cards];
   }
 
-  getCard(cardId: string){
-    return {...this._cards.find(c => c.id === cardId)}
-    
+  getCard(id: string) {
+    return { ...this._cards.find((p) => p.id === id) };
   }
 
   constructor() {}
