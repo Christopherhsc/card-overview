@@ -6,13 +6,13 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '',
     loadChildren: () =>
-      import('./auth/auth.module').then(
-        (m) => m.AuthModule
+      import('./landing-page/landing-page.module').then(
+        (m) => m.LandingPageModule
       ),
   },
   // {

@@ -6,12 +6,12 @@ import { IonicModule } from '@ionic/angular';
 
 // Custom components
 import { CardModule } from './components/card/card.module';
-import { LandingPageComponent } from './user-landing-page/landing-page.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserLandingPageComponent } from './components/user-landing-page/user-landing-page.component';
 
 @NgModule({
-  declarations: [LandingPageComponent, NewsletterComponent, ProfileComponent],
+  declarations: [UserLandingPageComponent, NewsletterComponent, ProfileComponent],
   imports: [
     CommonModule,
     UserLandingPageRoutingModule,

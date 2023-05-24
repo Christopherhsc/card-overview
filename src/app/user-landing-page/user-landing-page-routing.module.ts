@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserLandingPageModule } from './user-landing-page.module';
-import { LandingPageComponent } from './user-landing-page/landing-page.component';
+
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { CardComponent } from './components/card/components/card/card.component';
+import { AuthGuard } from '../auth/auth.guard';
+import { UserLandingPageComponent } from './components/user-landing-page/user-landing-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LandingPageComponent,
+    component: UserLandingPageComponent,
     children: [
       {
         path: 'card',
         loadChildren: () =>
           import('./components/card/card-routing.module').then(
-            (m) => m.CardRoutingModule
+            (m) => m.CardRoutingModule,
           ),
       },
       {
