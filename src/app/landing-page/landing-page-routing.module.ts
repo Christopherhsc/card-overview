@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { NewsletterComponent } from '../shared/newsletter/newsletter.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent,
+  },
+  {
+    path: 'newsletter',
+    component: NewsletterComponent
   },
   {
     path: 'auth',

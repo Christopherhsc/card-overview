@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AuthGuard } from '../auth/auth.guard';
 import { UserLandingPageComponent } from './components/user-landing-page/user-landing-page.component';
+import { NewsletterComponent } from '../shared/newsletter/newsletter.component';
 
 const routes: Routes = [
   {
