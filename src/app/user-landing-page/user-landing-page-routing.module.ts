@@ -27,14 +27,7 @@ const routes: Routes = [
             (m) => m.CardRoutingModule
           ),
       },
-      {
-        path: ':cardId',
-        loadChildren: () =>
-          import('./components/card/card-routing.module').then(
-            (m) => m.CardRoutingModule
-          ),
-      },
-    
+
       { path: '', redirectTo: '', pathMatch: 'full' },
     ],
   },

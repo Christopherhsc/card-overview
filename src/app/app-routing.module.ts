@@ -15,13 +15,6 @@ const routes: Routes = [
         (m) => m.LandingPageModule
       ),
   },
-  // {
-  //   path: '',
-  //   loadChildren: () =>
-  //     import('./user-landing-page/user-landing-page.module').then(
-  //       (m) => m.UserLandingPageModule
-  //     ),
-  // },
 ];
 
 @NgModule({
