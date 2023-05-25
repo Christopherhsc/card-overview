@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { NewsletterComponent } from '../shared/newsletter/newsletter.component';
+import { AuthComponent } from '../auth/components/auth/auth.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule),
+        component: AuthComponent
       },
     ]
   },

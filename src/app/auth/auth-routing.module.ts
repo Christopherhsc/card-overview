@@ -5,17 +5,6 @@ import { AuthGuard } from './auth.guard';
 import { UserLandingPageComponent } from '../user-landing-page/components/user-landing-page/user-landing-page.component';
 
 const routes: Routes = [
-  {
-    path: 'auth',
-    component: AuthComponent,
-  },
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('../user-landing-page/user-landing-page.module').then(
-        (m) => m.UserLandingPageModule
-      ),
-  },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

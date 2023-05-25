@@ -7,16 +7,9 @@ import { NewsletterComponent } from '../shared/newsletter/newsletter.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'profile',
     component: UserLandingPageComponent,
     children: [
-      {
-        path: 'card',
-        loadChildren: () =>
-          import('./components/card/card-routing.module').then(
-            (m) => m.CardRoutingModule,
-          ),
-      },
       {
         path: 'newsletter',
         component: NewsletterComponent,
@@ -24,6 +17,13 @@ const routes: Routes = [
       {
         path: 'settings',
         component: ProfileComponent,
+      },
+      {
+        path: 'card',
+        loadChildren: () =>
+          import('./components/card/card-routing.module').then(
+            (m) => m.CardRoutingModule
+          ),
       },
       {
         path: ':cardId',
