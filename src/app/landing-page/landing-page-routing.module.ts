@@ -7,15 +7,18 @@ const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent,
+    children: [
+      {
+        path: 'newsletter',
+        component: NewsletterComponent,
+      },
+      {
+        path: 'login',
+        loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule),
+      },
+    ]
   },
-  {
-    path: 'newsletter',
-    component: NewsletterComponent,
-  },
-  {
-    path: 'auth',
-    loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule),
-  },
+
 ];
 
 @NgModule({

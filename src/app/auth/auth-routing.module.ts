@@ -6,11 +6,11 @@ import { UserLandingPageComponent } from '../user-landing-page/components/user-l
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     component: AuthComponent,
   },
   {
-    path: 'profile',
+    path: 'login',
     loadChildren: () =>
       import('../user-landing-page/user-landing-page.module').then(
         (m) => m.UserLandingPageModule

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
-import { Router, UrlTree } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -13,7 +13,7 @@ export class AuthComponent implements OnInit {
   ngOnInit() {}
 
   onLogin() {
-    // this.authService.login();
+    this.authService.login();
     this.router.navigate(['auth', 'profile'])
   }
 }
