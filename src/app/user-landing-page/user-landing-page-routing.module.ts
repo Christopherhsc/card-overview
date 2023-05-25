@@ -22,7 +22,7 @@ const routes: Routes = [
         component: NewsletterComponent,
       },
       {
-        path: 'profile',
+        path: 'settings',
         component: ProfileComponent,
       },
       {
@@ -32,10 +32,10 @@ const routes: Routes = [
             (m) => m.CardRoutingModule
           ),
       },
-      { path: '', redirectTo: '', pathMatch: 'full' },
+      { path: '**', redirectTo: '', pathMatch: 'full' },
     ],
   },
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

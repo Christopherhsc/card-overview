@@ -10,11 +10,16 @@ const routes: Routes = [
   },
   {
     path: 'newsletter',
-    component: NewsletterComponent
+    component: NewsletterComponent,
   },
   {
     path: 'auth',
     loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '**',
+    redirectTo: '/',
+    pathMatch: 'full',
   },
 ];
 

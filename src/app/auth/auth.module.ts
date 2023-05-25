@@ -3,7 +3,12 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
 import { AuthRoutingModule } from './auth-routing.module';
+
+//custom components
 import { AuthComponent } from './components/auth/auth.component';
+
+//custom modules
+import { UserLandingPageModule } from '../user-landing-page/user-landing-page.module';
 
 
 @NgModule({
@@ -11,7 +16,8 @@ import { AuthComponent } from './components/auth/auth.component';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    IonicModule
+    IonicModule,
+    UserLandingPageModule
   ],
   exports: [AuthComponent]
 })
