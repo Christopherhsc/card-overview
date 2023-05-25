@@ -8,15 +8,16 @@ import { LoginComponent } from './components/login/login.component';
 
 //custom modules
 import { UserLandingPageModule } from '../user-landing-page/user-landing-page.module';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     IonicModule,
     UserLandingPageModule
   ],
-  exports: [LoginComponent]
+  exports: []
 })
 export class AuthModule { }
