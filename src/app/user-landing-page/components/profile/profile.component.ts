@@ -14,7 +14,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {}
 
   logout() {
-    console.log("kommer vi her?")
     this.authService.onLogout();
     this.router.navigateByUrl('/');
   }

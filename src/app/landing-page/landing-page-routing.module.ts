@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { NewsletterComponent } from '../shared/newsletter/newsletter.component';
-import { AuthComponent } from '../auth/components/auth/auth.component';
+import { LoginComponent } from '../auth/components/login/login.component';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        component: AuthComponent
+        component: LoginComponent
       },
     ],
   }

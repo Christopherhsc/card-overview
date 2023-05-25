@@ -4,19 +4,19 @@ import { IonicModule } from '@ionic/angular';
 
 
 //custom components
-import { AuthComponent } from './components/auth/auth.component';
+import { LoginComponent } from './components/login/login.component';
 
 //custom modules
 import { UserLandingPageModule } from '../user-landing-page/user-landing-page.module';
 
 
 @NgModule({
-  declarations: [AuthComponent],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     IonicModule,
     UserLandingPageModule
   ],
-  exports: [AuthComponent]
+  exports: [LoginComponent]
 })
 export class AuthModule { }

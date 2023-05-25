@@ -3,17 +3,17 @@ import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class AuthComponent implements OnInit {
+export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
 
   login() {
     this.authService.onLogin();
-    this.router.navigate(['profile'])
+    this.router.navigate(['profile']);
   }
 }
