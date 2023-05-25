@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserLandingPageComponent } from './components/user-landing-page/user-landing-page.component';
 import { NewsletterComponent } from '../shared/newsletter/newsletter.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
     path: 'profile',
     component: UserLandingPageComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'newsletter',
@@ -32,10 +34,11 @@ const routes: Routes = [
             (m) => m.CardRoutingModule
           ),
       },
-      { path: '**', redirectTo: '', pathMatch: 'full' },
+    
+      { path: '', redirectTo: '', pathMatch: 'full' },
     ],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

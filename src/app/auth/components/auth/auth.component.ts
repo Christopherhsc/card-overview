@@ -12,8 +12,8 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {}
 
-  onLogin() {
-    this.authService.login();
+  login() {
+    this.authService.onLogin();
     this.router.navigate(['profile'])
   }
 }

@@ -9,14 +9,14 @@ export class AuthService {
   get userIsAuthenticated() {
     return this._userIsAuthenticated;
   }
-  
+
   constructor() {}
 
-  login() {
+  onLogin() {
     this._userIsAuthenticated = true;
   }
 
-  logout() {
+  onLogout() {
     this._userIsAuthenticated = false;
   }
 }
