@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
-    console.log('kommer vi her?');
     this.modalCtrl.create({ component: RegisterComponent }).then((modalEl) => {
       modalEl.present();
     });

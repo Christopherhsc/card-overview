@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CardService } from '../../card.service';
+import { ModalController } from '@ionic/angular';
+
+// custom components
 import { Card } from '../../card.model';
+import { CardEditComponent } from '../card-edit/card-edit.component';
+import { CardService } from '../../card.service';
 
 @Component({
   selector: 'app-card-details',
@@ -14,7 +18,8 @@ export class CardDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private cardService: CardService,
-    private router: Router
+    private router: Router,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -29,7 +34,18 @@ export class CardDetailsComponent implements OnInit {
     });
   }
 
-  goToEditCard() {
-    this.router.navigate(['cardId', '/edit' ]);
+  // goToEditCard() {
+  //   this.router.navigate(['cardId', '/edit' ]);
+  // }
+
+  editCard() {
+    this.modalCtrl
+      .create({
+        component: CardEditComponent,
+        componentProps: { selectedCard: this.card },
+      })
+      .then((modalEl) => {
+        modalEl.present();
+      });
   }
 }
