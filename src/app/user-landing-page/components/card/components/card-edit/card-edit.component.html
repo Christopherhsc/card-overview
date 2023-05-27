@@ -6,17 +6,17 @@
       <ion-title class="ion-padding ion-text-center">Edit card for {{ card?.title }}</ion-title>
     </ion-toolbar>
   </ion-header> -->
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button (click)="closeModal()">
-          <ion-icon name="close"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-title>{{ selectedCard?.title }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ selectedCard?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-content class="ion-text-center ion-padding">
-    <h1>Edit details for <br> {{ selectedCard?.title }}</h1>
-  </ion-content>
+<ion-content class="ion-text-center ion-padding">
+  <h1>Edit details for {{ selectedCard?.title }}</h1>
+</ion-content>
