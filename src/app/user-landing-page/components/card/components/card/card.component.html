@@ -9,30 +9,42 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <ion-list>
-    <ion-item>
-      <ion-label>Title</ion-label>
-      <ion-label class="ion-text-center">Active</ion-label>
-      <ion-label class="ion-text-center">Price</ion-label>
-      <ion-label class="ion-text-center">Card name</ion-label>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item-sliding *ngFor="let card of loadedCards" #slidingItem>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        size-md="8"
+        offset-md="2"
+        size-lg="8"
+        offset-lg="2"
+        size-xl="6"
+        offset-xl="3"
+      >
+    <ion-list>
       <ion-item>
-        <ion-label>{{ card.title }}</ion-label>
-        <ion-label class="ion-text-center">{{ card.active }}</ion-label>
-        <ion-label class="ion-text-center">{{
-          card.price | currency
-        }}</ion-label>
-        <ion-label class="ion-text-center">{{ card.cardName }}</ion-label>
+        <ion-label>Title</ion-label>
+        <ion-label class="ion-text-center">Active</ion-label>
+        <ion-label class="ion-text-center">Price</ion-label>
+        <ion-label class="ion-text-center">Card name</ion-label>
       </ion-item>
-      <ion-item-options>
-        <ion-item-option (click)="editCard(card.id!, slidingItem)">
-          <!-- Edit details -->
-          EDIT {{ card.title }}
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+    </ion-list>
+    <ion-list>
+      <ion-item-sliding *ngFor="let card of loadedCards" #slidingItem>
+        <ion-item>
+          <ion-label>{{ card.title }}</ion-label>
+          <ion-label class="ion-text-center">{{ card.active }}</ion-label>
+          <ion-label class="ion-text-center">{{
+            card.price | currency
+          }}</ion-label>
+          <ion-label class="ion-text-center">{{ card.cardName }}</ion-label>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option (click)="editCard(card.id!, slidingItem)">
+            <!-- Edit details -->
+            EDIT {{ card.title }}
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+      </ion-col></ion-row></ion-grid>
 </ion-content>

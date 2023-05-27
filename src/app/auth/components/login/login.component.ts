@@ -3,6 +3,7 @@ import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { RegisterComponent } from '../register/register.component';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,8 @@ import { RegisterComponent } from '../register/register.component';
 })
 export class LoginComponent implements OnInit {
   isLoading = false;
+  loginForm!: FormGroup;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -33,6 +36,16 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['profile']);
         }, 1000);
       });
+  }
+
+  submitForm() {
+    if (this.loginForm.valid) {
+      // Perform login logic here
+      const email = this.loginForm.value.email;
+      const password = this.loginForm.value.password;
+      console.log('Email:', email);
+      console.log('Password:', password);
+    }
   }
 
   register() {
