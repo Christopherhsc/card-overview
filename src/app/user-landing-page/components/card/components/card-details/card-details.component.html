@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button tab="card" defaultHref="/card"></ion-back-button>
+      <ion-back-button defaultHref="/profile" (click)="cardOverview()"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-padding ion-text-center">{{ card?.title }}</ion-title>
     <ion-buttons slot="end">

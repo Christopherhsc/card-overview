@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 
 // custom components
 import { Card } from '../../card.model';
@@ -18,8 +18,8 @@ export class CardDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private cardService: CardService,
-    private router: Router,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private backCtrl: NavController
   ) {}
 
   ngOnInit() {
@@ -47,5 +47,9 @@ export class CardDetailsComponent implements OnInit {
       .then((modalEl) => {
         modalEl.present();
       });
+  }
+
+  cardOverview() {
+    this.backCtrl.back();
   }
 }
