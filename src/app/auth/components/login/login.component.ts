@@ -3,7 +3,7 @@ import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { RegisterComponent } from '../register/register.component';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +18,16 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private modalCtrl: ModalController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
+    });
+  }
 
   login() {
     this.isLoading = true;
@@ -39,13 +45,31 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm() {
-    if (this.loginForm.valid) {
-      // Perform login logic here
-      const email = this.loginForm.value.email;
-      const password = this.loginForm.value.password;
-      console.log('Email:', email);
-      console.log('Password:', password);
+    if (!this.loginForm.valid) {
+      return;
     }
+    if (this.loginForm.valid) {
+      const email = this.loginForm.get('email')?.value;
+      const password = this.loginForm.get('password')?.value;
+
+      // Perform login logic here
+      if (this.emailIsValid(email) && this.passwordIsValid(password)) {
+        // Successful login
+        
+        // Reset the form
+        this.loginForm.reset();
+        console.log(this.loginForm);
+      }
+    }
+  }
+  emailIsValid(email: string): boolean {
+    // Simple email validation using regular expression
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  passwordIsValid(password: string): boolean {
+    // Minimum length of 5 characters
+    return password.length >= 5;
   }
 
   register() {

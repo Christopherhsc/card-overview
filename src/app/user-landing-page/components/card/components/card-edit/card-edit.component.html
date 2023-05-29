@@ -1,11 +1,3 @@
-<!-- <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button tab="card" defaultHref="/card"></ion-back-button>
-      </ion-buttons>
-      <ion-title class="ion-padding ion-text-center">Edit card for {{ card?.title }}</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -18,5 +10,88 @@
 </ion-header>
 
 <ion-content class="ion-text-center ion-padding">
-  <h1>Edit details for {{ selectedCard?.title }}</h1>
+  <h4>Edit details for {{ selectedCard?.title }}</h4>
+
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <ion-item>
+            <ion-label position="floating">Title</ion-label>
+            <ion-input
+              formControlName="title"
+              minlength="1"
+              maxlength="22"
+              type="text"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <ion-item>
+            <ion-label position="floating">Price</ion-label>
+            <ion-input formControlName="price" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <ion-item>
+            <ion-label position="floating">Card name</ion-label>
+            <ion-input
+              formControlName="cardName"
+              maxlength="12"
+              type="text"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <ion-item>
+            <ion-toggle
+              justify="start"
+              class="ion-justify-content-center"
+              formControlName="active"
+              >Transiction active?</ion-toggle
+            >
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <ion-item>
+            <ion-label class="padding"
+              >When was last time u got charged?</ion-label
+            >
+            <ion-datetime-button datetime="datetime"> </ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime
+                  formControlName="date"
+                  id="datetime"
+                  presentation="date"
+                  displayFormat="YYYY-MM-DD"
+                  locale="en-US"
+                ></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center on-edit-button">
+        <ion-col size="9" size-sm="5" size-md="4.3" size-lg="4.3" size-xl="4.3">
+          <ion-button
+            expand="block"
+            type="submit"
+            [disabled]="!form.valid"
+            (click)="onEditTransiction()"
+            >Edit transiction</ion-button
+          ></ion-col
+        >
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 
@@ -6,14 +6,16 @@ import { ModalController, NavController } from '@ionic/angular';
 import { Card } from '../../card.model';
 import { CardEditComponent } from '../card-edit/card-edit.component';
 import { CardService } from '../../card.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-card-details',
   templateUrl: './card-details.component.html',
   styleUrls: ['./card-details.component.scss'],
 })
-export class CardDetailsComponent implements OnInit {
+export class CardDetailsComponent implements OnInit, OnDestroy {
   card?: Card;
+  private cardSub?: Subscription
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,14 +31,12 @@ export class CardDetailsComponent implements OnInit {
       }
       const cardId = paramMap.get('cardId');
       if (cardId !== null) {
-        this.card = this.cardService.getCard(cardId);
+       this.cardSub = this.cardService.getCard(paramMap.get('cardId')!).subscribe((card) => {
+          this.card = card;
+        });
       }
     });
   }
-
-  // goToEditCard() {
-  //   this.router.navigate(['cardId', '/edit' ]);
-  // }
 
   editCard() {
     this.modalCtrl
@@ -51,5 +51,11 @@ export class CardDetailsComponent implements OnInit {
 
   cardOverview() {
     this.backCtrl.back();
+  }
+
+  ngOnDestroy(): void {
+    if(this.cardSub){
+      this.cardSub?.unsubscribe()
+    }
   }
 }

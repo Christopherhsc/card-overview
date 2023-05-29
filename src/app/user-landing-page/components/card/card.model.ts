@@ -4,6 +4,7 @@ export class Card {
     public title?: string,
     public active?: boolean,
     public price?: number,
-    public cardName?: string
+    public cardName?: string,
+    public Date?: Date
   ) {}
 }
