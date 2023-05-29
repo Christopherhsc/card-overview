@@ -20,6 +20,8 @@ export class CardService {
     new Card('4', 'Viaplay', false, 8, '1282', new Date('2017-03-03')),
   ]);
 
+  constructor() {}
+
   get cards() {
     return this._cards.asObservable();
   }
@@ -59,5 +61,31 @@ export class CardService {
     );
   }
 
-  constructor() {}
+  updateCard(
+    cardId: string,
+    title: string,
+    active: boolean,
+    price: number,
+    cardName: string,
+    date: Date
+  ) {
+    return this.cards.pipe(
+      take(1),
+      delay(2000),
+      tap((cards) => {
+        const updatedCardIndex = cards.findIndex((card) => card.id === cardId);
+        const updatedCards = [...cards];
+        const oldCard = updatedCards[updatedCardIndex];
+        updatedCards[updatedCardIndex] = new Card(
+          oldCard.id,
+          title,
+          active,
+          price,
+          cardName,
+          date
+        );
+        this._cards.next(updatedCards);
+      })
+    );
+  }
 }

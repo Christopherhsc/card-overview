@@ -1,28 +1,35 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Card } from '../../card.model';
-import { ModalController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CardService } from '../../card.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-edit',
   templateUrl: './card-edit.component.html',
   styleUrls: ['./card-edit.component.scss'],
 })
-export class CardEditComponent implements OnInit {
+export class CardEditComponent implements OnInit, OnDestroy {
   @Input() selectedCard?: Card;
   form!: FormGroup;
 
   constructor(
     private modalCtrl: ModalController,
-    private cardService: CardService
+    private cardService: CardService,
+    private loadingCtrl: LoadingController,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.form = new FormGroup({
       title: new FormControl(this.selectedCard?.title, {
         updateOn: 'blur',
-        validators: [Validators.required, Validators.minLength(1), Validators.maxLength(22)],
+        validators: [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(22),
+        ],
       }),
       active: new FormControl(this.selectedCard?.active, {
         updateOn: 'blur',
@@ -44,11 +51,32 @@ export class CardEditComponent implements OnInit {
     if (!this.form.valid) {
       return;
     }
-    console.log(this.form);
-    this.closeModal()
+    this.loadingCtrl
+      .create({
+        message: 'Updating transcition...',
+      })
+      .then((loadingEl) => {
+        loadingEl.present();
+        this.cardService
+          .updateCard(
+            this.form.value.cardId,
+            this.form.value.title,
+            this.form.value.active,
+            this.form.value.price,
+            this.form.value.cardName,
+            this.form.value.date
+          )
+          .subscribe(() => {
+            loadingEl.dismiss();
+            this.closeModal()
+            this.router.navigate(['profile', 'card'])
+          });
+      });
   }
 
   closeModal() {
     this.modalCtrl.dismiss();
   }
+
+  ngOnDestroy() {}
 }
