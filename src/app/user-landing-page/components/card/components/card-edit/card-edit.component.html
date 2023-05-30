@@ -5,7 +5,12 @@
         <ion-icon name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ selectedCard?.title }}</ion-title>
+    <ion-title class="ion-text-center">{{ selectedCard?.title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="deleteTransiction(selectedCard?.id)">
+        <ion-icon name="trash-outline" slot="icon-only" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -81,15 +86,14 @@
           </ion-item>
         </ion-col>
       </ion-row>
-      <ion-row class="ion-justify-content-center on-edit-button">
-        <ion-col size="9" size-sm="5" size-md="4.3" size-lg="4.3" size-xl="4.3">
+      <ion-row>
+        <ion-col>
           <ion-button
-            expand="block"
             type="submit"
             [disabled]="!form.valid"
             (click)="onEditTransiction()"
-            >Edit transiction</ion-button
-          ></ion-col
+            >Edit transiction</ion-button>
+            </ion-col
         >
       </ion-row>
     </ion-grid>

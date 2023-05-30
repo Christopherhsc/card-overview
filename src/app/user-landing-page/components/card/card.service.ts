@@ -88,4 +88,9 @@ export class CardService {
       })
     );
   }
+  deleteCard(cardId: string){
+    return this.cards.pipe(take(1), delay(1000), tap(cards => {
+      this._cards.next(cards.filter(c => c.id !== cardId))
+    }))
+  }
 }
