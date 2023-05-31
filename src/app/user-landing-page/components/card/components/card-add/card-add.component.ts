@@ -56,6 +56,7 @@ export class CardAddComponent implements OnInit {
         loadingEl.present();
         this.cardService
           .addCard(
+            this.form.value.id,
             this.form.value.title,
             (this.form.value.active = true),
             +this.form.value.price,

@@ -26,16 +26,28 @@ export class CardService {
     return this._cards.asObservable();
   }
 
-  getCard(id: string) {
+  getCard(cardId: string) {
     return this.cards.pipe(
       take(1),
       map((cards) => {
-        return { ...cards.find((p) => p.id === id) };
+        return { ...cards.find((c) => c.id === cardId) };
       })
     );
   }
 
+  generateRandomCardId() {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let cardId = '';
+    for (let i = 0; i < 10; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      cardId += characters.charAt(randomIndex);
+    }
+    return cardId;
+  }
+
   addCard(
+    cardId: string,
     title: string,
     active: boolean,
     price: number,
@@ -43,9 +55,9 @@ export class CardService {
     date: Date
   ) {
     const newCard = new Card(
-      Math.random().toString(),
+      cardId = this.generateRandomCardId(),
       title,
-      active,
+      active = true,
       price,
       cardName,
       date
@@ -56,7 +68,8 @@ export class CardService {
       tap((cards) => {
         setTimeout(() => {
           this._cards.next(cards.concat(newCard));
-        });
+    console.log(newCard)
+  });
       })
     );
   }
@@ -75,9 +88,8 @@ export class CardService {
       tap((cards) => {
         const updatedCardIndex = cards.findIndex((card) => card.id === cardId);
         const updatedCards = [...cards];
-        const oldCard = updatedCards[updatedCardIndex];
         updatedCards[updatedCardIndex] = new Card(
-          oldCard.id,
+          cardId,
           title,
           active,
           price,
@@ -88,9 +100,14 @@ export class CardService {
       })
     );
   }
-  deleteCard(cardId: string){
-    return this.cards.pipe(take(1), delay(1000), tap(cards => {
-      this._cards.next(cards.filter(c => c.id !== cardId))
-    }))
+  
+  deleteCard(cardId: string) {
+    return this.cards.pipe(
+      take(1),
+      delay(1000),
+      tap((cards) => {
+        this._cards.next(cards.filter((c) => c.id !== cardId));
+      })
+    );
   }
 }
