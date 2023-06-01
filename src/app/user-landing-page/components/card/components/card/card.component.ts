@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CardService } from '../../card.service';
-import { Card } from '../../card.model';
+import { DataService } from '../../data.service';
+import { Transaction } from '../../transaction.modal';
 import { IonItemSliding } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,25 +11,25 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit, OnDestroy {
-  loadedCards!: Card[]
-  private cardsSub?: Subscription
+  loadedTransactions!: Transaction[]
+  private transactionsSub?: Subscription
 
-  constructor(private cardService: CardService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
-    this.cardsSub = this.cardService.cards.subscribe(cards => {
-      this.loadedCards = cards
+    this.transactionsSub = this.dataService.transactions.subscribe(transactions => {
+      this.loadedTransactions = transactions
     }) 
   }
 
-  editCard(cardId: string, slidingItem: IonItemSliding){
+  editTransaction(transactionId: string, slidingItem: IonItemSliding){
     slidingItem.close()
-    this.router.navigate(['/', cardId])
+    this.router.navigate(['/', transactionId])
   }
 
   ngOnDestroy(): void {
-    if(this.cardsSub){
-      this.cardsSub.unsubscribe()
+    if(this.transactionsSub){
+      this.transactionsSub.unsubscribe()
     }
   }
 }

@@ -5,9 +5,9 @@
         <ion-icon name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">{{ selectedCard?.title }}</ion-title>
+    <ion-title class="ion-text-center">{{ selectedTransaction?.title }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="deleteTransaction(selectedCard?.id)">
+      <ion-button (click)="deleteTransaction(selectedTransaction?.id)">
         <ion-icon name="trash-outline" slot="icon-only" color="danger"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -15,7 +15,7 @@
 </ion-header>
 
 <ion-content class="ion-text-center ion-padding">
-  <h4>Edit details for {{ selectedCard?.title }}</h4>
+  <h4>Edit details for {{ selectedTransaction?.title }}</h4>
 
   <form [formGroup]="form">
     <ion-grid>

@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 
 // custom components
-import { Card } from '../../card.model';
+import { Transaction } from '../../transaction.modal';
 import { CardEditComponent } from '../card-edit/card-edit.component';
-import { CardService } from '../../card.service';
+import { DataService } from '../../data.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,35 +14,35 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./card-details.component.scss'],
 })
 export class CardDetailsComponent implements OnInit, OnDestroy {
-  card?: Card;
-  private cardSub?: Subscription
+  transaction?: Transaction;
+  private transactionSub?: Subscription
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private cardService: CardService,
+    private dataService: DataService,
     private modalCtrl: ModalController,
     private backCtrl: NavController
   ) {}
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
-      if (!paramMap.has('cardId')) {
+      if (!paramMap.has('transactionId')) {
         return;
       }
-      const cardId = paramMap.get('cardId');
-      if (cardId !== null) {
-       this.cardSub = this.cardService.getTransaction(paramMap.get('cardId')!).subscribe((card) => {
-          this.card = card;
+      const transactionId = paramMap.get('transactionId');
+      if (transactionId !== null) {
+       this.transactionSub = this.dataService.getTransaction(paramMap.get('transactionId')!).subscribe((transaction) => {
+          this.transaction = transaction;
         });
       }
     });
   }
 
-  editTransaction   () {
+  editTransaction() {
     this.modalCtrl
       .create({
         component: CardEditComponent,
-        componentProps: { selectedCard: this.card },
+        componentProps: { selectedTransaction: this.transaction },
       })
       .then((modalEl) => {
         modalEl.present();
@@ -54,8 +54,8 @@ export class CardDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.cardSub){
-      this.cardSub?.unsubscribe()
+    if(this.transactionSub){
+      this.transactionSub?.unsubscribe()
     }
   }
 }

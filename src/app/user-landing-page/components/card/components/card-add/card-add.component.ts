@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CardService } from '../../card.service';
+import { DataService } from '../../data.service';
 import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class CardAddComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
-    private cardService: CardService,
+    private dataService: DataService,
     private loadingCtrl: LoadingController,
     private router: Router
   ) {}
@@ -54,7 +54,7 @@ export class CardAddComponent implements OnInit {
       })
       .then((loadingEl) => {
         loadingEl.present();
-        this.cardService
+        this.dataService
           .addTransaction(
             this.form.value.id,
             this.form.value.title,

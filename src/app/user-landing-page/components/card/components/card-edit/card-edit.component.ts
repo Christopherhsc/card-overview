@@ -1,8 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Card } from '../../card.model';
+import { Transaction } from '../../transaction.modal';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CardService } from '../../card.service';
+import { DataService } from '../../data.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,22 +11,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./card-edit.component.scss'],
 })
 export class CardEditComponent implements OnInit, OnDestroy {
-  @Input() selectedCard?: Card;
+  @Input() selectedTransaction?: Transaction;
   form!: FormGroup;
 
   constructor(
     private modalCtrl: ModalController,
-    private cardService: CardService,
+    private dataService: DataService,
     private loadingCtrl: LoadingController,
     private router: Router
   ) {}
 
   ngOnInit() {
     this.form = new FormGroup({
-      cardId: new FormControl(this.selectedCard?.id, {
+      cardId: new FormControl(this.selectedTransaction?.id, {
         updateOn: 'blur',
       }),
-      title: new FormControl(this.selectedCard?.title, {
+      title: new FormControl(this.selectedTransaction?.title, {
         updateOn: 'blur',
         validators: [
           Validators.required,
@@ -34,17 +34,17 @@ export class CardEditComponent implements OnInit, OnDestroy {
           Validators.maxLength(22),
         ],
       }),
-      active: new FormControl(this.selectedCard?.active, {
+      active: new FormControl(this.selectedTransaction?.active, {
         updateOn: 'blur',
       }),
-      price: new FormControl(this.selectedCard?.price, {
+      price: new FormControl(this.selectedTransaction?.price, {
         updateOn: 'blur',
       }),
-      cardName: new FormControl(this.selectedCard?.cardName, {
+      cardName: new FormControl(this.selectedTransaction?.cardName, {
         updateOn: 'blur',
         validators: [Validators.maxLength(12)],
       }),
-      date: new FormControl(this.selectedCard?.Date?.toISOString(), {
+      date: new FormControl(this.selectedTransaction?.Date?.toISOString(), {
         updateOn: 'blur',
       }),
     });
@@ -60,7 +60,7 @@ export class CardEditComponent implements OnInit, OnDestroy {
       })
       .then((loadingEl) => {
         loadingEl.present();
-        this.cardService
+        this.dataService
           .updateTransaction(
             this.form.value.cardId,
             this.form.value.title,
@@ -84,7 +84,7 @@ export class CardEditComponent implements OnInit, OnDestroy {
   deleteTransaction(cardId: any){
     this.loadingCtrl.create({message: 'Deleting transaction...'}).then(loadingEl => {
       loadingEl.present()
-    this.cardService.deleteCard(cardId).subscribe(() => {
+    this.dataService.deleteTransaction(cardId).subscribe(() => {
       loadingEl.dismiss()
     })
 

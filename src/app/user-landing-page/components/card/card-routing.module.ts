@@ -15,11 +15,11 @@ const routes: Routes = [
     component: CardAddComponent,
   },
   {
-    path: ':cardId',
+    path: ':transactionId',
     component: CardDetailsComponent,
   },
   {
-    path: 'edit/:cardId',
+    path: 'edit/:transactionId',
     component: CardEditComponent,
   },
 ];
