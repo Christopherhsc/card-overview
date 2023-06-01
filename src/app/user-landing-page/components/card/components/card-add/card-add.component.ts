@@ -44,18 +44,18 @@ export class CardAddComponent implements OnInit {
     });
   }
 
-  onCreateTransiction() {
+  onCreateTransaction() {
     if (!this.form.valid) {
       return;
     }
     this.loadingCtrl
       .create({
-        message: 'Creating transiction',
+        message: 'Creating transaction',
       })
       .then((loadingEl) => {
         loadingEl.present();
         this.cardService
-          .addCard(
+          .addTransaction(
             this.form.value.id,
             this.form.value.title,
             (this.form.value.active = true),

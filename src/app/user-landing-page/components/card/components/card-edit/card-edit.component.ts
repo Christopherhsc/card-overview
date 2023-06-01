@@ -50,7 +50,7 @@ export class CardEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  onEditTransiction() {
+  onEditTransaction() {
     if (!this.form.valid) {
       return;
     }
@@ -61,7 +61,7 @@ export class CardEditComponent implements OnInit, OnDestroy {
       .then((loadingEl) => {
         loadingEl.present();
         this.cardService
-          .updateCard(
+          .updateTransaction(
             this.form.value.cardId,
             this.form.value.title,
             this.form.value.active,
@@ -81,7 +81,7 @@ export class CardEditComponent implements OnInit, OnDestroy {
     this.router.navigate(['profile', 'card'])
   }
 
-  deleteTransiction(cardId: any){
+  deleteTransaction(cardId: any){
     this.loadingCtrl.create({message: 'Deleting transaction...'}).then(loadingEl => {
       loadingEl.present()
     this.cardService.deleteCard(cardId).subscribe(() => {

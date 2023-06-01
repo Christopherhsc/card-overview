@@ -1,11 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Card } from './card.model';
 import { BehaviorSubject, delay, map, take, tap } from 'rxjs';
+import { Card } from './card.model';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CardService {
+  databaseConnection = 'https://card-overview-default-rtdb.europe-west1.firebasedatabase.app/'
+
   private _cards = new BehaviorSubject<Card[]>([
     new Card(
       '1',
@@ -20,13 +24,13 @@ export class CardService {
     new Card('4', 'Viaplay', false, 8, '1282', new Date('2017-03-03')),
   ]);
 
-  constructor() {}
+  constructor(private authService: AuthService, private http: HttpClient) {}
 
   get cards() {
     return this._cards.asObservable();
   }
 
-  getCard(cardId: string) {
+  getTransaction(cardId: string) {
     return this.cards.pipe(
       take(1),
       map((cards) => {
@@ -35,7 +39,7 @@ export class CardService {
     );
   }
 
-  generateRandomCardId() {
+  generateRandomTransactionId() {
     const characters =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let cardId = '';
@@ -46,7 +50,7 @@ export class CardService {
     return cardId;
   }
 
-  addCard(
+  addTransaction(
     cardId: string,
     title: string,
     active: boolean,
@@ -55,13 +59,16 @@ export class CardService {
     date: Date
   ) {
     const newCard = new Card(
-      cardId = this.generateRandomCardId(),
+      cardId,
       title,
-      active = true,
+      active,
       price,
       cardName,
       date
     );
+
+    this.http.post(this.databaseConnection, 'transactions.json')
+
     return this.cards.pipe(
       take(1),
       delay(1000),
@@ -74,7 +81,7 @@ export class CardService {
     );
   }
 
-  updateCard(
+  updateTransaction(
     cardId: string,
     title: string,
     active: boolean,

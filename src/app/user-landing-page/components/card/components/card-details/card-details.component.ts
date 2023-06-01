@@ -31,14 +31,14 @@ export class CardDetailsComponent implements OnInit, OnDestroy {
       }
       const cardId = paramMap.get('cardId');
       if (cardId !== null) {
-       this.cardSub = this.cardService.getCard(paramMap.get('cardId')!).subscribe((card) => {
+       this.cardSub = this.cardService.getTransaction(paramMap.get('cardId')!).subscribe((card) => {
           this.card = card;
         });
       }
     });
   }
 
-  editCard() {
+  editTransaction   () {
     this.modalCtrl
       .create({
         component: CardEditComponent,

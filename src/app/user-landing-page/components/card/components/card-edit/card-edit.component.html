@@ -7,7 +7,7 @@
     </ion-buttons>
     <ion-title class="ion-text-center">{{ selectedCard?.title }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="deleteTransiction(selectedCard?.id)">
+      <ion-button (click)="deleteTransaction(selectedCard?.id)">
         <ion-icon name="trash-outline" slot="icon-only" color="danger"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -60,7 +60,7 @@
               justify="start"
               class="ion-justify-content-center"
               formControlName="active"
-              >Transiction active?</ion-toggle
+              >Transaction active?</ion-toggle
             >
           </ion-item>
         </ion-col>
@@ -91,8 +91,8 @@
           <ion-button
             type="submit"
             [disabled]="!form.valid"
-            (click)="onEditTransiction()"
-            >Edit transiction</ion-button>
+            (click)="onEditTransaction()"
+            >Edit transaction</ion-button>
             </ion-col
         >
       </ion-row>
