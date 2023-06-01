@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, delay, map, take, tap } from 'rxjs';
-import { Transaction } from './transaction.modal';
+import { Transaction } from '../../user-landing-page/components/transaction/transaction.modal';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Injectable({

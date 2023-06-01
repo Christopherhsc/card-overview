@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Transaction } from '../../transaction.modal';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DataService } from '../../data.service';
+import { DataService } from '../../../../../shared/services/data.service';
 import { Router } from '@angular/router';
 
 @Component({

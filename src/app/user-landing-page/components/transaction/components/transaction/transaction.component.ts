@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DataService } from '../../data.service';
+import { DataService } from '../../../../../shared/services/data.service';
 import { Transaction } from '../../transaction.modal';
 import { IonItemSliding } from '@ionic/angular';
 import { Router } from '@angular/router';

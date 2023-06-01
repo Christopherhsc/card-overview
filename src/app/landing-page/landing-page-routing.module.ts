@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { NewsletterComponent } from '../shared/newsletter/newsletter.component';
+import { NewsletterComponent } from '../shared/components/newsletter/newsletter.component';
 import { LoginComponent } from '../auth/components/login/login.component';
 
 const routes: Routes = [

@@ -5,7 +5,7 @@ import { ModalController, NavController } from '@ionic/angular';
 // custom components
 import { Transaction } from '../../transaction.modal';
 import { TransactionEditComponent } from '../transaction-edit/transaction-edit.component';
-import { DataService } from '../../data.service';
+import { DataService } from '../../../../../shared/services/data.service';
 import { Subscription } from 'rxjs';
 
 @Component({

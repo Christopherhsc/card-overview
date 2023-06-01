@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewsletterComponent } from './newsletter/newsletter.component';
+import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { IonicModule } from '@ionic/angular';
 
 
