@@ -5,11 +5,11 @@ import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-card-add',
-  templateUrl: './card-add.component.html',
-  styleUrls: ['./card-add.component.scss'],
+  selector: 'app-transaction-add',
+  templateUrl: './transaction-add.component.html',
+  styleUrls: ['./transaction-add.component.scss'],
 })
-export class CardAddComponent implements OnInit {
+export class TransactionAddComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
@@ -66,7 +66,7 @@ export class CardAddComponent implements OnInit {
           .subscribe(() => {
             loadingEl.dismiss()
             this.form.reset();
-            this.router.navigate(['profile', 'card']);
+            this.router.navigate(['profile', 'transaction']);
           });
       });
   }

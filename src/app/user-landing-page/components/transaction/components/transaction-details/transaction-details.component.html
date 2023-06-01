@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/profile" (click)="cardOverview()"></ion-back-button>
+      <ion-back-button defaultHref="/profile" (click)="transactionOverview()"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-padding ion-text-center">{{ transaction?.title }}</ion-title>
     <ion-buttons slot="end">
@@ -14,5 +14,3 @@
 <ion-content class="padding"> 
   {{transaction?.price}}
 </ion-content>
-
-<!-- [routerLink]="['/', 'profile', 'card', 'edit', card?.id] -->

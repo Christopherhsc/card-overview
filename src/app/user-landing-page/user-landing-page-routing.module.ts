@@ -21,10 +21,10 @@ const routes: Routes = [
         component: ProfileComponent,
       },
       {
-        path: 'card',
+        path: 'transaction',
         loadChildren: () =>
-          import('./components/card/card-routing.module').then(
-            (m) => m.CardRoutingModule
+          import('./components/transaction/transaction-routing.module').then(
+            (m) => m.TransactionRoutingModule
           ),
       },
 

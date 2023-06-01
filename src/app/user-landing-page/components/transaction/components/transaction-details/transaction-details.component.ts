@@ -4,16 +4,16 @@ import { ModalController, NavController } from '@ionic/angular';
 
 // custom components
 import { Transaction } from '../../transaction.modal';
-import { CardEditComponent } from '../card-edit/card-edit.component';
+import { TransactionEditComponent } from '../transaction-edit/transaction-edit.component';
 import { DataService } from '../../data.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-card-details',
-  templateUrl: './card-details.component.html',
-  styleUrls: ['./card-details.component.scss'],
+  selector: 'app-transaction-details',
+  templateUrl: './transaction-details.component.html',
+  styleUrls: ['./transaction-details.component.scss'],
 })
-export class CardDetailsComponent implements OnInit, OnDestroy {
+export class TransactionDetailsComponent implements OnInit, OnDestroy {
   transaction?: Transaction;
   private transactionSub?: Subscription
 
@@ -41,7 +41,7 @@ export class CardDetailsComponent implements OnInit, OnDestroy {
   editTransaction() {
     this.modalCtrl
       .create({
-        component: CardEditComponent,
+        component: TransactionEditComponent,
         componentProps: { selectedTransaction: this.transaction },
       })
       .then((modalEl) => {
@@ -49,7 +49,7 @@ export class CardDetailsComponent implements OnInit, OnDestroy {
       });
   }
 
-  cardOverview() {
+  transactionOverview() {
     this.backCtrl.back();
   }
 

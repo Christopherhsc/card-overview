@@ -5,7 +5,7 @@ import { UserLandingPageRoutingModule } from './user-landing-page-routing.module
 import { IonicModule } from '@ionic/angular';
 
 // Custom components
-import { CardModule } from './components/card/card.module';
+import { TransactionModule } from './components/transaction/transaction.module';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserLandingPageComponent } from './components/user-landing-page/user-landing-page.component';
 import { SharedModule } from '../shared/shared.module';
@@ -16,7 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     UserLandingPageRoutingModule,
     IonicModule,
-    CardModule,
+    TransactionModule,
     SharedModule
   ],
 })

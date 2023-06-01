@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+  selector: 'app-transaction',
+  templateUrl: './transaction.component.html',
+  styleUrls: ['./transaction.component.scss'],
 })
-export class CardComponent implements OnInit, OnDestroy {
+export class TransactionComponent implements OnInit, OnDestroy {
   loadedTransactions!: Transaction[]
   private transactionsSub?: Subscription
 

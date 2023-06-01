@@ -6,11 +6,11 @@ import { DataService } from '../../data.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-card-edit',
-  templateUrl: './card-edit.component.html',
-  styleUrls: ['./card-edit.component.scss'],
+  selector: 'app-transaction-edit',
+  templateUrl: './transaction-edit.component.html',
+  styleUrls: ['./transaction-edit.component.scss'],
 })
-export class CardEditComponent implements OnInit, OnDestroy {
+export class TransactionEditComponent implements OnInit, OnDestroy {
   @Input() selectedTransaction?: Transaction;
   form!: FormGroup;
 
@@ -23,7 +23,7 @@ export class CardEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.form = new FormGroup({
-      cardId: new FormControl(this.selectedTransaction?.id, {
+      transactionId: new FormControl(this.selectedTransaction?.id, {
         updateOn: 'blur',
       }),
       title: new FormControl(this.selectedTransaction?.title, {
@@ -62,7 +62,7 @@ export class CardEditComponent implements OnInit, OnDestroy {
         loadingEl.present();
         this.dataService
           .updateTransaction(
-            this.form.value.cardId,
+            this.form.value.transactionId,
             this.form.value.title,
             this.form.value.active,
             this.form.value.price,
@@ -72,25 +72,25 @@ export class CardEditComponent implements OnInit, OnDestroy {
           .subscribe(() => {
             loadingEl.dismiss();
             this.closeModal()
-            this.backToCardView()
+            this.backToTransactionView()
           });
       });
   }
 
-  backToCardView(){
-    this.router.navigate(['profile', 'card'])
+  backToTransactionView(){
+    this.router.navigate(['profile', 'transaction'])
   }
 
-  deleteTransaction(cardId: any){
+  deleteTransaction(transactionId: any){
     this.loadingCtrl.create({message: 'Deleting transaction...'}).then(loadingEl => {
       loadingEl.present()
-    this.dataService.deleteTransaction(cardId).subscribe(() => {
+    this.dataService.deleteTransaction(transactionId).subscribe(() => {
       loadingEl.dismiss()
     })
 
     })
     this.closeModal()
-    this.backToCardView()
+    this.backToTransactionView()
   }
 
   closeModal() {
