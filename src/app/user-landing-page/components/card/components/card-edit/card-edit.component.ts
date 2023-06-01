@@ -23,6 +23,9 @@ export class CardEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.form = new FormGroup({
+      cardId: new FormControl(this.selectedCard?.id, {
+        updateOn: 'blur',
+      }),
       title: new FormControl(this.selectedCard?.title, {
         updateOn: 'blur',
         validators: [

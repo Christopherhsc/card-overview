@@ -86,6 +86,7 @@ export class CardService {
       take(1),
       delay(2000),
       tap((cards) => {
+        console.log(this.cards, cards, cardId)
         const updatedCardIndex = cards.findIndex((card) => card.id === cardId);
         const updatedCards = [...cards];
         updatedCards[updatedCardIndex] = new Card(
@@ -97,6 +98,7 @@ export class CardService {
           date
         );
         this._cards.next(updatedCards);
+        console.log(updatedCards)
       })
     );
   }
