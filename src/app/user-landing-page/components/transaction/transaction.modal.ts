@@ -5,6 +5,6 @@ export class Transaction {
     public active?: boolean,
     public price?: number,
     public cardName?: string,
-    public Date?: string
+    public Date?: Date
   ) {}
 }

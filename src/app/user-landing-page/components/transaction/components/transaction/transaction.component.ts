@@ -13,18 +13,22 @@ import { Subscription } from 'rxjs';
 export class TransactionComponent implements OnInit, OnDestroy {
   loadedTransactions?: Transaction[];
   private transactionsSub?: Subscription;
+  transactions?: any[];
 
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
     this.transactionsSub = this.dataService.transactions.subscribe(
-      transactions => {
+      (transactions) => {
         this.loadedTransactions = transactions;
-      })
+      }
+    );
   }
 
   ionViewWillEnter() {
-    this.dataService.fetchTransactions().subscribe();
+    this.dataService.fetchTransactions().subscribe((response) => {
+      this.loadedTransactions = response;
+    });
   }
 
   editTransaction(transactionId: string, slidingItem: IonItemSliding) {

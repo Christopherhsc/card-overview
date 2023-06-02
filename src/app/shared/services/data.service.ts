@@ -30,11 +30,10 @@ export class DataService {
   fetchTransactions() {
     return this.http
       .get<{ [key: string]: Transactiondata }>(
-        this.databaseConnection + '.json'
+        this.databaseConnection + 'transactions.json'
       )
       .pipe(
         map((resData) => {
-
           const transactions = [];
           for (const key in resData) {
             if (resData.hasOwnProperty(key)) {
@@ -45,7 +44,7 @@ export class DataService {
                   resData[key].active,
                   resData[key].price,
                   resData[key].cardName,
-                  resData[key].date
+                  new Date(resData[key].date) 
                 )
               );
             }
@@ -80,7 +79,7 @@ export class DataService {
       active,
       price,
       cardName,
-      date
+      new Date(date)
     );
     let generatedId: string;
 
@@ -124,7 +123,7 @@ export class DataService {
           active,
           price,
           cardName,
-          date.toISOString()
+          date
         );
         this._transactions.next(updatedTransactions);
       })
