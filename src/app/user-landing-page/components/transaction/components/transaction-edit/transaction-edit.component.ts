@@ -44,7 +44,7 @@ export class TransactionEditComponent implements OnInit, OnDestroy {
         updateOn: 'blur',
         validators: [Validators.maxLength(12)],
       }),
-      date: new FormControl(this.selectedTransaction?.Date?.toISOString(), {
+      date: new FormControl(null, {
         updateOn: 'blur',
       }),
     });

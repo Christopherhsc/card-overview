@@ -56,12 +56,11 @@ export class TransactionAddComponent implements OnInit {
         loadingEl.present();
         this.dataService
           .addTransaction(
-            this.form.value.id,
             this.form.value.title,
             (this.form.value.active = true),
-            +this.form.value.price,
+            this.form.value.price,
             this.form.value.cardName,
-            new Date(this.form.value.date)
+            this.form.value.date
           )
           .subscribe(() => {
             loadingEl.dismiss()
